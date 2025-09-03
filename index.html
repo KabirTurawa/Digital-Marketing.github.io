@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="We are here providing you the best inetrior design services">
+    <title>U~KInterior Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .portfolio-item { position: relative; overflow: hidden; }
+        .portfolio-overlay { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            background: linear-gradient(45deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.8));
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .hero-bg { 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .parallax { 
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold font-playfair text-amber-800">U~K Interiors</h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-amber-800 transition-colors font-medium">Home</a>
+                    <a href="#services" class="text-gray-700 hover:text-amber-800 transition-colors font-medium">Services</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-amber-800 transition-colors font-medium">Portfolio</a>
+                    <a href="#about" class="text-gray-700 hover:text-amber-800 transition-colors font-medium">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-amber-800 transition-colors font-medium">Contact</a>
+                    <button onclick="openConsultationModal()" class="bg-amber-800 text-white px-6 py-2 rounded-lg hover:bg-amber-900 transition-colors font-medium">
+                        Free Consultation
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700">Home</a>
+                <a href="#services" class="block px-3 py-2 text-gray-700">Services</a>
+                <a href="#portfolio" class="block px-3 py-2 text-gray-700">Portfolio</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700">About</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg pt-20 pb-20 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center text-white">
+                <h1 class="text-5xl md:text-7xl font-bold font-playfair mb-6 fade-in">
+                    Transform Your Space
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto fade-in opacity-90">
+                    Award-winning interior design that reflects your personality and enhances your lifestyle
+                </p>
+                <div class="space-x-4 fade-in">
+                    <button onclick="scrollToSection('portfolio')" class="bg-amber-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-amber-900 transition-colors">
+                        View Our Work
+                    </button>
+                    <button onclick="openConsultationModal()" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-amber-800 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair text-gray-900 mb-6">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From concept to completion, we offer comprehensive interior design services tailored to your vision
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Residential Design -->
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover fade-in border border-gray-100">
+                    <div class="h-48 mb-6 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Residential Design" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-2xl font-semibold font-playfair text-gray-900 mb-4">Residential Design</h3>
+                    <p class="text-gray-600 mb-6">Create beautiful, functional living spaces that reflect your personal style and enhance daily life.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• Complete home makeovers</li>
+                        <li>• Room-by-room design</li>
+                        <li>• Color consultation</li>
+                        <li>• Furniture selection & placement</li>
+                    </ul>
+                    <button onclick="selectService('Residential Design')" class="w-full bg-amber-800 text-white py-3 rounded-lg hover:bg-amber-900 transition-colors font-medium">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Commercial Design -->
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover fade-in border border-gray-100">
+                    <div class="h-48 mb-6 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Commercial Design" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-2xl font-semibold font-playfair text-gray-900 mb-4">Commercial Design</h3>
+                    <p class="text-gray-600 mb-6">Professional spaces that inspire productivity and leave lasting impressions on clients and employees.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• Office space planning</li>
+                        <li>• Retail store design</li>
+                        <li>• Restaurant & hospitality</li>
+                        <li>• Brand-aligned interiors</li>
+                    </ul>
+                    <button onclick="selectService('Commercial Design')" class="w-full bg-blue-800 text-white py-3 rounded-lg hover:bg-blue-900 transition-colors font-medium">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Space Planning -->
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover fade-in border border-gray-100">
+                    <div class="h-48 mb-6 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Space Planning" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-2xl font-semibold font-playfair text-gray-900 mb-4">Space Planning</h3>
+                    <p class="text-gray-600 mb-6">Optimize your space layout for maximum functionality, flow, and aesthetic appeal.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• 3D floor plans</li>
+                        <li>• Traffic flow optimization</li>
+                        <li>• Furniture arrangement</li>
+                        <li>• Storage solutions</li>
+                    </ul>
+                    <button onclick="selectService('Space Planning')" class="w-full bg-green-800 text-white py-3 rounded-lg hover:bg-green-900 transition-colors font-medium">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Renovation Management -->
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover fade-in border border-gray-100">
+                    <div class="h-48 mb-6 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Renovation Management" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-2xl font-semibold font-playfair text-gray-900 mb-4">Renovation Management</h3>
+                    <p class="text-gray-600 mb-6">Full-service renovation management from initial concept through final installation.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• Project coordination</li>
+                        <li>• Contractor management</li>
+                        <li>• Timeline & budget control</li>
+                        <li>• Quality assurance</li>
+                    </ul>
+                    <button onclick="selectService('Renovation Management')" class="w-full bg-purple-800 text-white py-3 rounded-lg hover:bg-purple-900 transition-colors font-medium">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Styling & Staging -->
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover fade-in border border-gray-100">
+                    <div class="h-48 mb-6 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Styling & Staging" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-2xl font-semibold font-playfair text-gray-900 mb-4">Styling & Staging</h3>
+                    <p class="text-gray-600 mb-6">Professional styling services to showcase your property's best features and maximize appeal.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• Home staging for sale</li>
+                        <li>• Event styling</li>
+                        <li>• Seasonal decorating</li>
+                        <li>• Accessory selection</li>
+                    </ul>
+                    <button onclick="selectService('Styling & Staging')" class="w-full bg-pink-800 text-white py-3 rounded-lg hover:bg-pink-900 transition-colors font-medium">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Virtual Design -->
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover fade-in border border-gray-100">
+                    <div class="h-48 mb-6 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Virtual Design" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-2xl font-semibold font-playfair text-gray-900 mb-4">U~K Design</h3>
+                    <p class="text-gray-600 mb-6">Remote design services with 3D renderings and detailed plans delivered digitally.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• 3D room visualizations</li>
+                        <li>• Online consultations</li>
+                        <li>• Digital mood boards</li>
+                        <li>• Shopping lists & links</li>
+                    </ul>
+                    <button onclick="selectService('Virtual Design')" class="w-full bg-indigo-800 text-white py-3 rounded-lg hover:bg-indigo-900 transition-colors font-medium">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair text-gray-900 mb-6">Our Portfolio</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore our recent projects and see how we transform spaces into extraordinary environments
+                </p>
+            </div>
+
+            <!-- Portfolio Filter -->
+            <div class="flex flex-wrap justify-center mb-12 space-x-4">
+                <button onclick="filterPortfolio('all')" class="portfolio-filter active bg-amber-800 text-white px-6 py-2 rounded-full font-medium mb-2 hover:bg-amber-900 transition-colors">
+                    All Projects
+                </button>
+                <button onclick="filterPortfolio('residential')" class="portfolio-filter bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium mb-2 hover:bg-gray-300 transition-colors">
+                    Residential
+                </button>
+                <button onclick="filterPortfolio('commercial')" class="portfolio-filter bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium mb-2 hover:bg-gray-300 transition-colors">
+                    Commercial
+                </button>
+                <button onclick="filterPortfolio('renovation')" class="portfolio-filter bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium mb-2 hover:bg-gray-300 transition-colors">
+                    Renovations
+                </button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolioGrid">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item card-hover fade-in rounded-xl overflow-hidden shadow-lg" data-category="residential">
+                    <div class="h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Modern Living Room" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                        <div class="portfolio-overlay">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold font-playfair mb-2">Modern Living Room</h3>
+                                <p class="text-sm opacity-90">Contemporary residential design</p>
+                                <button onclick="openPortfolioModal('Modern Living Room', 'A stunning contemporary living room featuring clean lines, neutral tones, and carefully curated furniture pieces that create a sophisticated yet comfortable atmosphere.')" class="mt-4 bg-white text-amber-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item card-hover fade-in rounded-xl overflow-hidden shadow-lg" data-category="commercial">
+                    <div class="h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Corporate Office" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                        <div class="portfolio-overlay">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold font-playfair mb-2">Corporate Office</h3>
+                                <p class="text-sm opacity-90">Professional workspace design</p>
+                                <button onclick="openPortfolioModal('Corporate Office', 'A modern corporate office space designed to enhance productivity and collaboration, featuring ergonomic furniture, natural lighting, and brand-aligned color schemes.')" class="mt-4 bg-white text-blue-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item card-hover fade-in rounded-xl overflow-hidden shadow-lg" data-category="residential">
+                    <div class="h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Master Bedroom" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                        <div class="portfolio-overlay">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold font-playfair mb-2">Master Bedroom</h3>
+                                <p class="text-sm opacity-90">Luxurious bedroom retreat</p>
+                                <button onclick="openPortfolioModal('Master Bedroom', 'A serene master bedroom sanctuary featuring calming earth tones, premium textiles, and thoughtful lighting design that promotes rest and relaxation.')" class="mt-4 bg-white text-green-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item card-hover fade-in rounded-xl overflow-hidden shadow-lg" data-category="renovation">
+                    <div class="h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Kitchen Renovation" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                        <div class="portfolio-overlay">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold font-playfair mb-2">Kitchen Renovation</h3>
+                                <p class="text-sm opacity-90">Complete kitchen transformation</p>
+                                <button onclick="openPortfolioModal('Kitchen Renovation', 'A complete kitchen transformation featuring custom cabinetry, premium appliances, and an open-concept design that seamlessly blends functionality with style.')" class="mt-4 bg-white text-purple-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item card-hover fade-in rounded-xl overflow-hidden shadow-lg" data-category="commercial">
+                    <div class="h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Boutique Store" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                        <div class="portfolio-overlay">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold font-playfair mb-2">Boutique Store</h3>
+                                <p class="text-sm opacity-90">Retail space design</p>
+                                <button onclick="openPortfolioModal('Boutique Store', 'An elegant boutique store design that creates an immersive shopping experience through strategic lighting, display arrangements, and brand-focused interior elements.')" class="mt-4 bg-white text-pink-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item card-hover fade-in rounded-xl overflow-hidden shadow-lg" data-category="residential">
+                    <div class="h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Home Office" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                        <div class="portfolio-overlay">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-semibold font-playfair mb-2">Home Office</h3>
+                                <p class="text-sm opacity-90">Productive workspace design</p>
+                                <button onclick="openPortfolioModal('Home Office', 'A sophisticated home office design that maximizes productivity through ergonomic furniture, optimal lighting, and organized storage solutions in a stylish setting.')" class="mt-4 bg-white text-indigo-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section -->
+    <section class="py-20 parallax" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h2 class="text-4xl md:text-5xl font-bold font-playfair mb-6">Ready to Transform Your Space?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Let our award-winning team create the perfect environment for your lifestyle and needs.
+            </p>
+            <button onclick="openConsultationModal()" class="bg-amber-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-amber-900 transition-colors">
+                Schedule Free Consultation
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold font-playfair text-gray-900 mb-6">
+                        About U~K Interiors
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        With over 15 years of experience in U~K interior design, we've built our reputation on creating spaces that perfectly balance beauty, functionality, and personal expression.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our award-winning team of designers brings creativity, expertise, and attention to detail to every project, ensuring that your space not only looks stunning but also enhances your daily life.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 mb-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold font-playfair text-amber-800 mb-2">200+</div>
+                            <div class="text-gray-600">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold font-playfair text-amber-800 mb-2">15+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold font-playfair text-amber-800 mb-2">50+</div>
+                            <div class="text-gray-600">Design Awards</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold font-playfair text-amber-800 mb-2">100%</div>
+                            <div class="text-gray-600">Client Satisfaction</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="openConsultationModal()" class="bg-amber-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-amber-900 transition-colors">
+                        Schedule Consultation
+                    </button>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="rounded-xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Interior Design Team" 
+                             class="w-full h-96 object-cover"
+                             onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair text-gray-900 mb-6">What Our Clients Say</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Don't just take our word for it - hear from our satisfied clients
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="Rabia.jpg" 
+                             class="w-16 h-16 rounded-full object-cover mr-4"
+                             onerror="this.src=''; this.alt='Client photo'; this.style.display='none';">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Rabi'a Sani</h4>
+                            <p class="text-gray-600 text-sm">Homeowner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"U~K Interiors transformed our home beyond our wildest dreams. Their attention to detail and understanding of our lifestyle made all the difference."</p>
+                    <div class="flex text-amber-400">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="Kabir.jpg" 
+                             alt="Kabir" 
+                             class="w-16 h-16 rounded-full object-cover mr-4"
+                             onerror="this.src=''; this.alt='Client photo'; this.style.display='none';">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Kabir</h4>
+                            <p class="text-gray-600 text-sm">Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The team redesigned our office space and productivity has increased dramatically. The design perfectly reflects our company culture."</p>
+                    <div class="flex text-amber-400">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Emily Rodriguez" 
+                             class="w-16 h-16 rounded-full object-cover mr-4"
+                             onerror="this.src=''; this.alt='Client photo'; this.style.display='none';">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Emily Rodriguez</h4>
+                            <p class="text-gray-600 text-sm">Restaurant Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Our restaurant's new interior design has created an amazing atmosphere that keeps customers coming back. Absolutely phenomenal work!"</p>
+                    <div class="flex text-amber-400">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair text-gray-900 mb-6">Get In Touch</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to transform your space? Contact us today to schedule your free consultation.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="fade-in">
+                    <div class="bg-gray-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-semibold font-playfair text-gray-900 mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900">Phone</div>
+                                    <div class="text-gray-600">+234 8103484085</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900">Email</div>
+                                    <div class="text-gray-600">ukinteriordesign@gmail.com</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900">Address</div>
+                                    <div class="text-gray-600">101 Design Avenue<br>Creative District, CD 10001</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-8 border-t border-gray-200">
+                            <h4 class="font-semibold text-gray-900 mb-4">Studio Hours</h4>
+                            <div class="space-y-2 text-gray-600">
+                                <div class="flex justify-between">
+                                    <span>Monday - Friday</span>
+                                    <span>9:00 AM - 7:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Saturday</span>
+                                    <span>10:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Sunday</span>
+                                    <span>By Appointment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <form id="contactForm" class="bg-gray-50 p-8 rounded-xl space-y-6">
+                        <h3 class="text-2xl font-semibold font-playfair text-gray-900 mb-6">Send us a Message</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                            <input type="tel" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                            <select name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                                <option value="">Select a service</option>
+                                <option value="Residential Design">Residential Design</option>
+                                <option value="Commercial Design">Commercial Design</option>
+                                <option value="Space Planning">Space Planning</option>
+                                <option value="Renovation Management">Renovation Management</option>
+                                <option value="Styling & Staging">Styling & Staging</option>
+                                <option value="Virtual Design">Virtual Design</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Budget</label>
+                            <select name="budget" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                                <option value="">Select budget range</option>
+                                <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+                                <option value="$25,000 - $50,000">$25,000 - $50,000</option>
+                                <option value="$50,000 - $100,000">$50,000 - $100,000</option>
+                                <option value="$100,000+">$100,000+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
+                            <textarea name="message" rows="4" required placeholder="Tell us about your project, timeline, and any specific requirements..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-800 text-white py-4 rounded-lg font-semibold text-lg hover:bg-amber-900 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold font-playfair mb-4">U~K Interiors</h3>
+                    <p class="text-gray-400 mb-6">Creating extraordinary spaces that inspire and delight since 2009.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.017 0z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Residential Design</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Commercial Design</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Space Planning</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Renovation Management</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Virtual Design</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe for design tips and project updates.</p>
+                    <form id="newsletterForm" class="space-y-3">
+                        <input type="email" name="email" placeholder="Enter your email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                        <button type="submit" class="w-full bg-amber-800 text-white py-3 rounded-lg font-medium hover:bg-amber-900 transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 U~K Interiors. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Consultation Modal -->
+    <div id="consultationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-lg w-full p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-semibold font-playfair text-gray-900">Free Consultation</h3>
+                <button onclick="closeConsultationModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <form id="consultationForm" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                        <input type="text" name="firstName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                        <input type="text" name="lastName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                    <input type="tel" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                    <select name="service" id="modalService" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                        <option value="">Select a service</option>
+                        <option value="Residential Design">Residential Design</option>
+                        <option value="Commercial Design">Commercial Design</option>
+                        <option value="Space Planning">Space Planning</option>
+                        <option value="Renovation Management">Renovation Management</option>
+                        <option value="Styling & Staging">Styling & Staging</option>
+                        <option value="Virtual Design">Virtual Design</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Consultation Method</label>
+                    <select name="consultationType" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                        <option value="">Select consultation type</option>
+                        <option value="In-Person">In-Person Visit</option>
+                        <option value="Virtual">Virtual Meeting</option>
+                        <option value="Phone">Phone Call</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Brief Project Description</label>
+                    <textarea name="projectDescription" rows="3" placeholder="Tell us about your project..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-amber-800 text-white py-3 rounded-lg font-semibold hover:bg-amber-900 transition-colors">
+                    Schedule Consultation
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolioModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="portfolioModalTitle" class="text-2xl font-semibold font-playfair text-gray-900"></h3>
+                <button onclick="closePortfolioModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="portfolioModalContent" class="text-gray-600 mb-6"></div>
+            <div class="flex space-x-4">
+                <button onclick="openConsultationModal(); closePortfolioModal();" class="bg-amber-800 text-white px-6 py-2 rounded-lg font-medium hover:bg-amber-900 transition-colors">
+                    Start Similar Project
+                </button>
+                <button onclick="closePortfolioModal()" class="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hidden z-50">
+        <div class="flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span id="successText">Message sent successfully!</span>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Modal functions
+        function openConsultationModal() {
+            document.getElementById('consultationModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeConsultationModal() {
+            document.getElementById('consultationModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openPortfolioModal(title, content) {
+            document.getElementById('portfolioModalTitle').textContent = title;
+            document.getElementById('portfolioModalContent').textContent = content;
+            document.getElementById('portfolioModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePortfolioModal() {
+            document.getElementById('portfolioModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Select service function
+        function selectService(serviceName) {
+            document.getElementById('modalService').value = serviceName;
+            openConsultationModal();
+        }
+
+        // Portfolio filter function
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const filters = document.querySelectorAll('.portfolio-filter');
+            
+            // Update filter buttons
+            filters.forEach(filter => {
+                filter.classList.remove('active', 'bg-amber-800', 'text-white');
+                filter.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('active', 'bg-amber-800', 'text-white');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            const successText = document.getElementById('successText');
+            successText.textContent = message;
+            successDiv.classList.remove('hidden');
+            setTimeout(() => {
+                successDiv.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Form submissions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            setTimeout(() => {
+                showSuccess('Thank you for your message! We\'ll contact you within 24 hours to discuss your project.');
+                this.reset();
+            }, 1000);
+        });
+
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            setTimeout(() => {
+                showSuccess('Consultation scheduled! We\'ll send you a confirmation email with all the details.');
+                this.reset();
+                closeConsultationModal();
+            }, 1000);
+        });
+
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            setTimeout(() => {
+                showSuccess('Successfully subscribed! You\'ll receive our latest design tips and updates.');
+                this.reset();
+            }, 1000);
+        });
+
+        // Fade in animation on scroll
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Navigation link active state
+        function updateActiveNavLink() {
+            const sections = ['home', 'services', 'portfolio', 'about', 'contact'];
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-amber-800');
+                            link.classList.add('text-gray-700');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.remove('text-gray-700');
+                                link.classList.add('text-amber-800');
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+            updateActiveNavLink();
+        });
+
+        window.addEventListener('load', handleScrollAnimation);
+
+        // Close modals when clicking outside
+        document.getElementById('consultationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConsultationModal();
+            }
+        });
+
+        document.getElementById('portfolioModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePortfolioModal();
+            }
+        });
+
+        // Navigation link click handlers
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9792feff41bc465e',t:'MTc1Njg3ODkwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
